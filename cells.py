@@ -18,11 +18,12 @@ class dirs(enum.Enum):
 class mover:
     symbol = "^>v<"
     curpos = [0,0]
+    id = -1
     class can:
         rotate = True
         bemoved = [True, True, True, True]
     direction = -1
-    def __init__(self, pos: tuple, dir):
+    def __init__(self, pos, dir, id):
         self.curpos[0] = pos[0]
         self.curpos[1] = pos[1]
         self.direction = int(dir)
@@ -30,6 +31,7 @@ class mover:
     def tick(self, grid):
         dir = self.direction
         curpos = self.curpos
+        thisgrid = grid
         if dir == 0:
             if not [curpos[0], curpos[1] + 1] in grid:
                 curpos[1] += 1
@@ -44,6 +46,8 @@ class mover:
                 curpos[0] -= 1
         else:
             pass
+        thisgrid[self.id] = curpos
+        return thisgrid
     def scrget(self):
         curpos = self.curpos
         symbol = self.symbol
