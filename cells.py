@@ -6,7 +6,7 @@ cells goes heres
 
 import enum
 
-class dirtuple(enum.Enum):
+class dirs(enum.Enum):
     up=0
     right=1
     down=2
@@ -20,7 +20,7 @@ class mover:
     curpos = [0,0]
     class can:
         rotate = True
-        bemoved = True
+        bemoved = [True, True, True, True]
     direction = -1
     def __init__(self, pos: tuple, dir):
         self.curpos[0] = pos[0]
@@ -29,6 +29,7 @@ class mover:
         print(self.curpos, self.direction)
     def tick(self, grid):
         dir = self.direction
+        curpos = self.curpos
         if dir == 0:
             if not [curpos[0], curpos[1] + 1] in grid:
                 curpos[1] += 1
@@ -43,5 +44,8 @@ class mover:
                 curpos[0] -= 1
         else:
             pass
-    def scrget():
+    def scrget(self):
+        curpos = self.curpos
+        symbol = self.symbol
+        direction = self.direction
         return [curpos[0], curpos[1], symbol[direction]]
