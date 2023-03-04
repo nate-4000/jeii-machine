@@ -25,16 +25,17 @@ class cell:
             bemoved = [True, True, True, True]
         direction = -1
         def __repr__(self):
-            return "<cell Mover [\'%s\'] at position %s, facing %d>" % (self.scrget()[2], str(self.curpos), self.direction)
+            return "<cell Mover id %d [\'%s\'] at position %s, facing %d>" % (self.id, self.scrget()[2], str(self.curpos), self.direction)
         def __init__(self, pos, dir, id):
-            self.curpos[0] = pos[0]
-            self.curpos[1] = pos[1]
+            self.curpos = pos
             self.direction = int(dir)
-            print(self.curpos, self.direction)
+            self.id = id
+            print(self.curpos, self.direction, self.id)
         def tick(self, grid):
             dir = self.direction
             curpos = self.curpos
             thisgrid = grid
+            curpos = grid[self.id]
             if dir == 0:
                 if not [curpos[0], curpos[1] + 1] in grid:
                     curpos[1] += 1

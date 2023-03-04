@@ -18,8 +18,8 @@ icells = [
 tcells = []
 
 grid = [
-    [2,3],
-    [2,7]
+    [10,3], # position of cell with this id
+    [30,3]
 ]
 
 
@@ -32,13 +32,11 @@ for i, x in enumerate(icells):
 for _ in range(ticknums):
     for i in tcells:
         grid = i[0].tick(grid)
-        print(grid)
-        #print(i)
     screen.clrscn()
     for i in tcells:
-        screen.scnmem += [i[0].scrget()]
-        #print(screen.scnmem)
-    #screen.updscn()
-    #print(screen.scnmem)
-    #print(tcells)
-#    screen.getkey()
+        screen.pushp(*i[0].scrget(), r=False)
+        print("screen.scnmem", screen.scnmem)
+    screen.updscn()
+    #print("screen.scnmem", screen.scnmem)
+    print("grid", grid)
+    screen.getkey()
