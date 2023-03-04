@@ -26,7 +26,7 @@ grid = [
 
 for i, x in enumerate(icells):
     if x[0] == 0:
-        tcells += [[cells.mover(grid[ x[2] ], x[1], i)]]
+        tcells += [[cells.cell.mover(grid[ x[2] ], x[1], i)]]
     print(tcells)
 
 for _ in range(ticknums):
