@@ -57,3 +57,17 @@ class cell:
             symbol = self.symbol
             direction = self.direction
             return [curpos[0], curpos[1], symbol[direction]]
+    class CWrotator:
+        class can:
+            bemoved = [True, True, True, True]
+            rotate = False
+        symbol = "R"
+        curpos = [0,0]
+        id = -1
+        def __repr__(self):
+            return "<cell CWrotator id %d [\'%s\'] at position %s>" % self
+        def __init__(self, pos, dir, id):
+            self.curpos = pos
+            # self.direction = int(dir) # rotators cant be rotated... so this is uneeded
+            self.id = id
+            print(self.curpos, self.direction, self.id)
